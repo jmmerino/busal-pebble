@@ -32,5 +32,17 @@ var UI = require('ui');
         console.log("blah");
     };
 
+    linesMenu.parseLinesIntoMenuItems = function(data) {
+      var items = [];
+      for (var i = 0; i < data.length; i++) {
+        // Add to menu items array
+        items.push({
+          title: data[ i ].name
+        });
+      }
+
+      return items;
+    };
+
     module.exports = linesMenu;
 })();
