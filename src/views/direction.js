@@ -14,11 +14,15 @@
         // Construct Menu to show to user
         directionMenu.view = new UI.Menu({
             sections: [{
-                title: data.lineNum + ': Dirección',
+                title: data.idl + ': Dirección',
                 items: [{
-                    title: data.direction1
+                    title: data.direction1,
+                    idl: data.idl,
+                    direction: 1
                 },{
-                    title: data.direction2
+                    title: data.direction2,
+                    idl: data.idl,
+                    direction: 2
                 }]
             }]
         });    

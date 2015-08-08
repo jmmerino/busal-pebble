@@ -38,7 +38,7 @@
       var items = [];
       for (var i = 0; i < data.length; i++) {        
         items.push({
-            lineNum: data[ i ].num,
+            idl: data[ i ].num,
             title: data[ i ].name,
             direction1: data[ i ].direccion1,
             direction2: data[ i ].direccion2
