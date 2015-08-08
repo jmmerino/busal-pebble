@@ -40,9 +40,35 @@ ajax(
     type:'json'
   },
   function(data) {
-    console.log(data);
+    var menuItems = parseLinesIntoMenuItems(data);
+
+    // Construct Menu to show to user
+    var resultsMenu = new UI.Menu({
+      sections: [{
+        title: 'Líneas',
+        items: menuItems
+      }]
+    });
+
+    // Show the Menu, hide the splash
+    resultsMenu.show();
+    splashWindow.hide();
+
   },
   function(error) {
-    console.log('Download failed: ' + error);
+    console.log('Error cargando líneas: ' + error);
   }
 );
+
+
+var parseLinesIntoMenuItems = function(data) {
+  var items = [];
+  for (var i = 0; i < data.length; i++) {
+    // Add to menu items array
+    items.push({
+      title: data[ i ].name
+    });
+  }
+
+  return items;
+};
