@@ -8,10 +8,10 @@ var UI = require('ui');
 var Vector2 = require('vector2');
 
 var main = new UI.Card({
-  title: 'Pebble.js',
-  icon: 'images/menu_icon.png',
-  subtitle: 'Hello World!',
-  body: 'Press any button.'
+  title: 'Busal',
+  icon: 'images/busallogo.png',
+  subtitle: 'No pierdas el bus!',
+  body: 'Dale a algun botón'
 });
 
 main.show();
