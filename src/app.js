@@ -1,60 +1,34 @@
-/**
- * Welcome to Pebble.js!
- *
- * This is where you write your app.
- */
-
 var UI = require('ui');
+var ajax = require('ajax');
 var Vector2 = require('vector2');
 
-var main = new UI.Card({
-  title: 'Busal',
-  icon: 'images/busallogo.png',
-  subtitle: 'No pierdas el bus!',
-  body: 'Dale a algun botón'
+// Show splash screen while waiting for data
+var splashWindow = new UI.Window();
+
+// Text element to inform user
+var text = new UI.Text({
+  position: new Vector2(0, 20),
+  size: new Vector2(144, 168),
+  text:'Busal',
+  font:'GOTHIC_28_BOLD',
+  color:'black',
+  textOverflow:'wrap',
+  textAlign:'center',
+  backgroundColor:'white'
 });
 
-main.show();
-
-main.on('click', 'up', function(e) {
-  var menu = new UI.Menu({
-    sections: [{
-      items: [{
-        title: 'Pebble.js',
-        icon: 'images/menu_icon.png',
-        subtitle: 'Can do Menus'
-      }, {
-        title: 'Second Item',
-        subtitle: 'Subtitle Text'
-      }]
-    }]
-  });
-  menu.on('select', function(e) {
-    console.log('Selected item #' + e.itemIndex + ' of section #' + e.sectionIndex);
-    console.log('The item is titled "' + e.item.title + '"');
-  });
-  menu.show();
+var subtitle = new UI.Text({
+  position: new Vector2(0, 60),
+  size: new Vector2(144, 168),
+  text:'Cargando líneas...',
+  font:'GOTHIC_20_BOLD',
+  color:'black',
+  textOverflow:'wrap',
+  textAlign:'center',
+  backgroundColor:'white'
 });
 
-main.on('click', 'select', function(e) {
-  var wind = new UI.Window({
-    fullscreen: true,
-  });
-  var textfield = new UI.Text({
-    position: new Vector2(0, 65),
-    size: new Vector2(144, 30),
-    font: 'gothic-24-bold',
-    text: 'Text Anywhere!',
-    textAlign: 'center'
-  });
-  wind.add(textfield);
-  wind.show();
-});
-
-main.on('click', 'down', function(e) {
-  var card = new UI.Card();
-  card.title('A Card');
-  card.subtitle('Is a Window');
-  card.body('The simplest window type in Pebble.js.');
-  card.show();
-});
+// Add to splashWindow and show
+splashWindow.add(text);
+splashWindow.add(subtitle);
+splashWindow.show();
