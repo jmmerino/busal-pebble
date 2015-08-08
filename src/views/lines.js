@@ -31,15 +31,17 @@
     };
 
     linesMenu.onClickMenu = function(e) {        
-        linesMenu.event.trigger("lines-menu:select");
+        linesMenu.event.trigger("lines-menu:select", e);
     };
 
     linesMenu.parseLinesIntoMenuItems = function(data) {
       var items = [];
-      for (var i = 0; i < data.length; i++) {
-        // Add to menu items array
+      for (var i = 0; i < data.length; i++) {        
         items.push({
-          title: data[ i ].name
+            lineNum: data[ i ].num,
+            title: data[ i ].name,
+            direction1: data[ i ].direccion1,
+            direction2: data[ i ].direccion2
         });
       }
 

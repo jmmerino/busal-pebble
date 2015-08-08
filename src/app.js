@@ -1,18 +1,22 @@
 var splashView = require('views/splash'),
-    linesMenu = require('views/lines_menu'),
-    controller = require('lib/controller'),
+    linesView = require('views/lines'),
+    directionView = require('views/direction'),
+    controller = require('lib/controller'),    
     Event = require('lib/event');
 
 splashView.setEvent(Event);
-linesMenu.setEvent(Event);
+linesView.setEvent(Event);
+directionView.setEvent(Event);
+
 controller.setEvent(Event);
 
-Event.on("lines-menu:select", function() {
-    console.log("menu selected");
+Event.on("lines-menu:select", function(e) {
+    directionView.show(e.item);
+    linesView.hide();
 });
 
 Event.on("controller:lines-success", function(data) {
-    linesMenu.show(data);
+    linesView.show(data);
     splashView.hide();
 });
 
