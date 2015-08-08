@@ -12,12 +12,12 @@ controller.setEvent(Event);
 
 Event.on("lines-menu:select", function(e) {
     directionView.show(e.item);
-    linesView.hide();
+    // linesView.hide();
 });
 
 Event.on("controller:lines-success", function(data) {
-    splashView.hide();
-    linesView.show(data);    
+    linesView.show(data);
+    // splashView.hide();
 });
 
 splashView.show();
