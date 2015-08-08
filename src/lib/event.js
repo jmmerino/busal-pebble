@@ -1,43 +1,37 @@
 (function() {
-    var Event = function() {
-        var self = this;
 
-        self.queue = {};
-        self.fired = [];
+    var Event = {
+        queue: {},
+        fired: []
+    };
 
-        return {
+    Event.trigger = function(event) {
+        var queue = this.queue[event];
 
-            fire: function(event) {
-                var queue = self.queue[event];
+        if (typeof queue === 'undefined') {
+            return;
+        }
 
-                if (typeof queue === 'undefined') {
-                    return;
-                }
+        for (var i = 0; i < queue.length; i++) {
+            queue[i]();
+        }        
 
-                while (queue.length) {
-                    (queue.shift())();
-                }
+        // this.fired[event] = true;
+    };
 
-                self.fired[event] = true;
-            },
+    Event.on = function(event, callback) {
+        // if (this.fired[event] === true) {
+        //     return callback();
+        // }
 
-            on: function(event, callback) {
-                if (self.fired[event] === true) {
-                    return callback();
-                }
+        if (typeof this.queue[event] === 'undefined') {
+            this.queue[event] = [];
+        }
 
-                if (typeof self.queue[event] === 'undefined') {
-                    self.queue[event] = [];
-                }
+        this.queue[event].push(callback);
+    };
 
-                self.queue[event].push(callback);
-            }
-
-        };
-
-    }();
-
-    module.exports = new Event();
+    module.exports = Event;
 
 })();
     

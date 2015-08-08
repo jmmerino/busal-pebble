@@ -5,7 +5,7 @@
     var UI = require('ui'),
         linesMenu = {};
 
-    splashView.setEvent = function(event) {
+    linesMenu.setEvent = function(event) {
         this.event = event;
     };  
 
@@ -30,8 +30,8 @@
         linesMenu.view.hide();     
     };
 
-    linesMenu.onClickMenu = function(e) {
-        this.event.trigger("lines-menu:select");
+    linesMenu.onClickMenu = function(e) {        
+        linesMenu.event.trigger("lines-menu:select");
     };
 
     linesMenu.parseLinesIntoMenuItems = function(data) {

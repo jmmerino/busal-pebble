@@ -10,13 +10,13 @@ var UI = require('ui'),
 	};
 
 	splashView.setEvent = function(event) {
-		this.event = event;
+		splashView.event = event;
 	};	
 
 	splashView.show = function() {
 
 		// Show splash screen while waiting for data
-		this.splashWindow = new UI.Window();
+		splashView.splashWindow = new UI.Window();
 
 		// Text element to inform user
 		var text = new UI.Text({
@@ -42,14 +42,14 @@ var UI = require('ui'),
 		});
 
 		// Add to splashWindow and show
-		this.splashWindow.add(text);
-		this.splashWindow.add(subtitle);
-		this.splashWindow.show();  
+		splashView.splashWindow.add(text);
+		splashView.splashWindow.add(subtitle);
+		splashView.splashWindow.show();  
 	
 	};
 
 	splashView.hide = function() {
-		this.splashWindow.hide();  	
+		splashView.splashWindow.hide();  	
 	};
 
 	module.exports = splashView;
