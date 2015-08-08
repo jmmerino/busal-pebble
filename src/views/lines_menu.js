@@ -5,6 +5,10 @@
     var UI = require('ui'),
         linesMenu = {};
 
+    splashView.setEvent = function(event) {
+        this.event = event;
+    };  
+
     linesMenu.show = function (data) {                
         var menuItems = linesMenu.parseLinesIntoMenuItems(data);
 
@@ -27,7 +31,7 @@
     };
 
     linesMenu.onClickMenu = function(e) {
-        myEmitter.emit("lines-menu:select");
+        this.event.trigger("lines-menu:select");
     };
 
     linesMenu.parseLinesIntoMenuItems = function(data) {

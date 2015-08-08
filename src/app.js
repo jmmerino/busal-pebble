@@ -3,11 +3,12 @@ var UI = require('ui'),
   Vector2 = require('vector2'),
   splashView = require('views/splash'),
   linesMenu = require('views/lines_menu'),
-  Emitter = require('emitter');
+  Event = require('lib/event');
 
-  var myEmitter = new Emitter();
-  
-  myEmitter.on("lines-menu:select", function() {
+  splashView.setEvent(Event);
+  linesMenu.setEvent(Event);
+
+  Event.on("lines-menu:select", function() {
     console.log("menu selected");
   });
 
