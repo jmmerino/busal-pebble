@@ -1,11 +1,10 @@
-var UI = require('ui');
 
 (function() {
     "use strict";   
 
-    var linesMenu = {
-        view: null
-    };
+    var UI = require('ui'),
+        emitter = require('emitter'),
+        linesMenu = {};
 
     linesMenu.show = function (data) {                
         var menuItems = linesMenu.parseLinesIntoMenuItems(data);
@@ -29,7 +28,7 @@ var UI = require('ui');
     };
 
     linesMenu.onClickMenu = function(e) {
-        console.log("blah");
+        emitter.emit("lines-menu:select");
     };
 
     linesMenu.parseLinesIntoMenuItems = function(data) {
