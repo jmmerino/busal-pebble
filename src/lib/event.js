@@ -13,8 +13,13 @@
         }
 
         for (var i = 0; i < queue.length; i++) {
-            arguments.shift();
-            queue[i](arguments);
+            if (arguments && arguments.length > 1) {
+                var parameters = Array.prototype.slice.call(arguments, 1);                
+                queue[i].apply(this, parameters);
+            } else {
+                queue[i]();
+            }
+            
         }                
     };
 
