@@ -10,10 +10,12 @@
     };  
 
     linesMenu.show = function (data) {                
-        var menuItems = linesMenu.parseLinesIntoMenuItems(data);
+        var menuItems = linesMenu.parseLinesIntoMenuItems(data),
+            menu;
 
+        linesMenu.view = new UI.Window();
         // Construct Menu to show to user
-        linesMenu.view = new UI.Menu({
+        menu = new UI.Menu({
             sections: [{
                 title: 'Líneas',
                 items: menuItems
@@ -21,7 +23,8 @@
         });    
 
         // Add an action for SELECT
-        linesMenu.view.on('select', linesMenu.onClickMenu);
+        menu.on('select', linesMenu.onClickMenu);
+        linesMenu.view.add(menu);
         // Show the Menu
         linesMenu.view.show();                
     };

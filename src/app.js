@@ -16,8 +16,8 @@ Event.on("lines-menu:select", function(e) {
 });
 
 Event.on("controller:lines-success", function(data) {
-    linesView.show(data);
     splashView.hide();
+    linesView.show(data);    
 });
 
 splashView.show();

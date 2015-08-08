@@ -9,10 +9,13 @@
         this.event = event;
     };  
 
-    directionMenu.show = function (data) {                        
+    directionMenu.show = function (data) {
+        var menu;
+
+        directionMenu.view = new UI.Window();                        
 
         // Construct Menu to show to user
-        directionMenu.view = new UI.Menu({
+        menu = new UI.Menu({
             sections: [{
                 title: data.lineNum + ': Dirección',
                 items: [{
@@ -24,8 +27,10 @@
         });    
 
         // Add an action for SELECT
-        directionMenu.view.on('select', directionMenu.onClickMenu);
+        menu.on('select', directionMenu.onClickMenu);
+
         // Show the Menu
+        directionMenu.view.add(menu);        
         directionMenu.view.show();                
     };
 
