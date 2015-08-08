@@ -17,7 +17,7 @@ Event.on("controller:lines-success", function(data) {
 });
 
 splashView.show();
-Controller.getLines();
+controller.getLines();
 
 /**
  * Ajax functions
