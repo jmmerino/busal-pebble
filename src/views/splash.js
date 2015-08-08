@@ -1,12 +1,15 @@
+var UI = require('ui'),  
+  Vector2 = require('vector2');
+
 (function() {
-	"use strict";
+	"use strict";	
 
 	var splashView = {
 		splashWindow: null
 	};
 
-	splashView.show = function showSplashView() {
-		
+	splashView.show = function() {
+
 		// Show splash screen while waiting for data
 		splashView.splashWindow = new UI.Window();
 
@@ -38,6 +41,10 @@
 		splashView.splashWindow.add(subtitle);
 		splashView.splashWindow.show();  
 	
+	};
+
+	splashView.hide = function() {
+		splashView.splashWindow.hide();  	
 	};
 
 	module.exports = splashView;
