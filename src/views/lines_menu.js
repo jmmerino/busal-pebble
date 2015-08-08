@@ -3,7 +3,6 @@
     "use strict";   
 
     var UI = require('ui'),
-        emitter = require('emitter'),
         linesMenu = {};
 
     linesMenu.show = function (data) {                
@@ -28,7 +27,7 @@
     };
 
     linesMenu.onClickMenu = function(e) {
-        emitter.emit("lines-menu:select");
+        myEmitter.emit("lines-menu:select");
     };
 
     linesMenu.parseLinesIntoMenuItems = function(data) {

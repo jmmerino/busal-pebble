@@ -3,9 +3,11 @@ var UI = require('ui'),
   Vector2 = require('vector2'),
   splashView = require('views/splash'),
   linesMenu = require('views/lines_menu'),
-  emitter = require('emitter');
+  Emitter = require('emitter');
 
-  emitter.on("lines-menu:select", function() {
+  var myEmitter = new Emitter();
+  
+  myEmitter.on("lines-menu:select", function() {
     console.log("menu selected");
   });
 
