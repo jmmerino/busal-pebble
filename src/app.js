@@ -1,74 +1,64 @@
-var UI = require('ui');
-var ajax = require('ajax');
-var Vector2 = require('vector2');
+var UI = require('ui'),
+  ajax = require('ajax'),
+  Vector2 = require('vector2'),
+  splashView = require('views/splash');
 
-// Show splash screen while waiting for data
-var splashWindow = new UI.Window();
+  splashView.show();
 
-// Text element to inform user
-var text = new UI.Text({
-  position: new Vector2(0, 0),
-  size: new Vector2(144, 168),
-  text:'Busal',
-  font:'bitham-42-light',
-  color:'black',
-  textOverflow:'wrap',
-  textAlign:'center',
-  backgroundColor:'white'
-});
+// /**
+//  * Ajax functions
+//  */
 
-var subtitle = new UI.Text({
-  position: new Vector2(0, 100),
-  size: new Vector2(144, 168),
-  text:'Cargando líneas...',
-  font:'gothic-14',
-  color:'black',
-  textOverflow:'wrap',
-  textAlign:'center',
-  backgroundColor:'white'
-});
+// // Make request to busal.es
+// ajax(
+//   {
+//     url:'http://busal.es/api/v0.1/lines',
+//     type:'json'
+//   },
+//   function(data) {
+//     this.showLinesMenu(data);
+//   },
+//   function(error) {
+//     console.log('Error cargando líneas: ' + error);
+//   }
+// );
 
-// Add to splashWindow and show
-splashWindow.add(text);
-splashWindow.add(subtitle);
-splashWindow.show();  
+// /**
+//  * UI functions
+//  */
 
-// Make request to busal.es
-ajax(
-  {
-    url:'http://busal.es/api/v0.1/lines',
-    type:'json'
-  },
-  function(data) {
-    var menuItems = parseLinesIntoMenuItems(data);
+// var showLinesMenu = function(data) {
+//   var menuItems = parseLinesIntoMenuItems(data);
 
-    // Construct Menu to show to user
-    var resultsMenu = new UI.Menu({
-      sections: [{
-        title: 'Líneas',
-        items: menuItems
-      }]
-    });
+//     // Construct Menu to show to user
+//     var resultsMenu = new UI.Menu({
+//       sections: [{
+//         title: 'Líneas',
+//         items: menuItems
+//       }]
+//     });    
 
-    // Show the Menu, hide the splash
-    resultsMenu.show();
-    splashWindow.hide();
+//     // Add an action for SELECT
+//     resultsMenu.on('select', function(e) {
+//       console.log('Item number ' + e.itemIndex + ' was pressed!');
+//     });
 
-  },
-  function(error) {
-    console.log('Error cargando líneas: ' + error);
-  }
-);
+//     // Show the Menu, hide the splash
+//     resultsMenu.show();
+//     splashWindow.hide();    
+// };
 
+// /**
+//  * Parse functions
+//  */
+// var parseLinesIntoMenuItems = function(data) {
+//   var items = [];
+//   for (var i = 0; i < data.length; i++) {
+//     // Add to menu items array
+//     items.push({
+//       title: data[ i ].name
+//     });
+//   }
 
-var parseLinesIntoMenuItems = function(data) {
-  var items = [];
-  for (var i = 0; i < data.length; i++) {
-    // Add to menu items array
-    items.push({
-      title: data[ i ].name
-    });
-  }
-
-  return items;
-};
+//   return items;
+// };
