@@ -13,17 +13,12 @@
         }
 
         for (var i = 0; i < queue.length; i++) {
-            queue[i]();
-        }        
-
-        // this.fired[event] = true;
+            arguments.shift();
+            queue[i](arguments);
+        }                
     };
 
-    Event.on = function(event, callback) {
-        // if (this.fired[event] === true) {
-        //     return callback();
-        // }
-
+    Event.on = function(event, callback) {        
         if (typeof this.queue[event] === 'undefined') {
             this.queue[event] = [];
         }
